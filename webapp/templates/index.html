@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aruna Industry Presents</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Aruna Industry Presents</h1>
+        <br>Financial Advisor<br>
+        <ul class="navigation">
+            <li><a href="{{ url_for('track_expenses') }}">Track Expenses</a></li>
+            <li><a href="{{ url_for('predict_stock') }}">Predict Stock</a></li>
+            <li><a href="{{ url_for('optimise_portfolio') }}">Optimize Portfolio</a></li>
+            <li><a href="{{ url_for('search_query') }}">Search Query</a></li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimise Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='portfolio_styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Optimise Portfolio</h1>
+        
+        {% if plot_url %}
+        <div class="plot-section">
+            <h2>Optimal Portfolio Allocation</h2>
+            <img src="data:image/png;base64,{{ plot_url }}" alt="Portfolio Allocation Plot" class="plot-image">
+        </div>
+        <div class="results-section">
+            <p><strong>Optimal Return:</strong> {{ optimal_return }}</p>
+            <p><strong>Optimal Volatility:</strong> {{ optimal_volatility }}</p>
+            <p><strong>Optimal Sharpe Ratio:</strong> {{ optimal_sharpe_ratio }}</p>
+        </div>
+        {% elif error %}
+        <p class="error-message">{{ error }}</p>
+        {% endif %}
+
+        <form method="POST" class="form">
+            <label for="tickers">Enter Tickers (comma separated):</label>
+            <input type="text" id="tickers" name="tickers" required>
+            <button type="submit">Optimise</button>
+        </form>
+
+        <a href="{{ url_for('index') }}" class="back-link">Back to Home</a>
+    </div>
+</body>
+</html>

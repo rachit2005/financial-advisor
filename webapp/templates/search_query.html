@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Query</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='pp.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Search Query</h1>
+        <form method="post" class="search-form">
+            <label for="query">Your Query:</label>
+            <input type="text" id="query" name="query" required>
+            <button type="submit">Search</button>
+        </form>
+
+        {% if search_results %}
+        <div class="results-section">
+            <h2>Search Results</h2>
+            <ul class="results-list">
+                {% for result in search_results %}
+                <li><a href="{{ result }}" target="_blank">{{ result }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        
+        <a href="{{ url_for('index') }}" class="back-link">Back to Home</a>
+    </div>
+</body>
+</html>

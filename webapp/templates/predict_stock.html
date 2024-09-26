@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict Stock</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main2.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Predict Stock Prices</h1>
+        <form method="post" class="predict-form">
+            <label for="stock_name">Stock Name:</label>
+            <input type="text" id="stock_name" name="stock_name" required>
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if plot_url %}
+        <div class="result-section">
+            <h2>Stock Price Prediction</h2>
+            <img src="data:image/png;base64,{{ plot_url }}" alt="Stock Price Prediction" class="prediction-image">
+        </div>
+        {% endif %}
+
+        <a href="{{ url_for('index') }}" class="back-link">Back to Home</a>
+    </div>
+</body>
+</html>
